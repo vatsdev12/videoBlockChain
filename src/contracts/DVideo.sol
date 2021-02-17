@@ -10,13 +10,17 @@ contract DVideo {
     string hash;
     string title;
     address author;
+    uint data;
+
   }
 
   event VideoUploaded(
     uint id,
     string hash,
     string title,
-    address author
+    address author,
+    uint data
+
   );
 
   constructor() public {
@@ -34,8 +38,8 @@ contract DVideo {
     videoCount ++;
 
     // Add video to the contract
-    videos[videoCount] = Video(videoCount, _videoHash, _title, msg.sender);
+    videos[videoCount] = Video(videoCount, _videoHash, _title, msg.sender,1);
     // Trigger an event
-    emit VideoUploaded(videoCount, _videoHash, _title, msg.sender);
+    emit VideoUploaded(videoCount, _videoHash, _title, msg.sender,1);
   }
 }

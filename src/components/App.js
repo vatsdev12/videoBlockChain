@@ -33,10 +33,14 @@ class App extends Component {
     const web3 = window.web3
     // Load account
     const accounts = await web3.eth.getAccounts()
+    
     this.setState({ account: accounts[0] })
     // Network ID
     const networkId = await web3.eth.net.getId()
+
     const networkData = DVideo.networks[networkId]
+    console.log(networkData,"accountsaccounts",accounts);
+
     if(networkData) {
       const dvideo = new web3.eth.Contract(DVideo.abi, networkData.address)
       this.setState({ dvideo })
